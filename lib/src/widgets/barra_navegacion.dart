@@ -14,6 +14,8 @@ class BarraDeNavegacion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final sized = MediaQuery.of(context).size;
+
     return SidebarX(
       controller: _controller,
       theme: AppTheme.buttonNavigation,
@@ -24,8 +26,8 @@ class BarraDeNavegacion extends StatelessWidget {
         ),
       ),
       footerDivider: divider,
-      headerDivider: const SizedBox(
-        height: 100,
+      headerDivider: SizedBox(
+        height: sized.height * 0.1,
       ),
       items: [
         SidebarXItem(
@@ -40,15 +42,15 @@ class BarraDeNavegacion extends StatelessWidget {
           label: 'Search',
         ),
         const SidebarXItem(
-          icon: Icons.people,
+          icon: Icons.shopping_cart_outlined,
           label: 'People',
         ),
         const SidebarXItem(
-          icon: Icons.favorite,
+          icon: Icons.person_2_outlined,
           label: 'Favorites',
         ),
         const SidebarXItem(
-          iconWidget: FlutterLogo(size: 20),
+          icon: Icons.help_outline_sharp,
           label: 'Flutter',
         ),
       ],
