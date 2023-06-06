@@ -1,3 +1,4 @@
+import 'package:ecommerce/src/widgets/search.dart';
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 
@@ -18,9 +19,9 @@ class BarraDeNavegacion extends StatelessWidget {
 
     return SidebarX(
       controller: _controller,
-      theme: AppTheme.buttonNavigation,
+      theme: TemaAplication.buttonNavigation,
       extendedTheme: const SidebarXTheme(
-        width: 200,
+        width: 140,
         decoration: BoxDecoration(
           color: canvasColor,
         ),
@@ -32,26 +33,28 @@ class BarraDeNavegacion extends StatelessWidget {
       items: [
         SidebarXItem(
           icon: Icons.home,
-          label: 'Home',
+          label: 'Inicio',
           onTap: () {
             debugPrint('Home');
           },
         ),
-        const SidebarXItem(
-          icon: Icons.search,
-          label: 'Search',
-        ),
+        SidebarXItem(
+            icon: Icons.search,
+            label: 'Buscar',
+            onTap: () {
+              showSearch(context: context, delegate: LugaresSearch());
+            }),
         const SidebarXItem(
           icon: Icons.shopping_cart_outlined,
-          label: 'People',
+          label: 'Compras',
         ),
         const SidebarXItem(
           icon: Icons.person_2_outlined,
-          label: 'Favorites',
+          label: 'Usuario',
         ),
         const SidebarXItem(
           icon: Icons.help_outline_sharp,
-          label: 'Flutter',
+          label: 'Ayuda',
         ),
       ],
     );

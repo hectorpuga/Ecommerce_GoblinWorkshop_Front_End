@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 
-class AppTheme {
+class TemaAplication {
   static final buttonNavigation = SidebarXTheme(
     margin: const EdgeInsets.all(10),
     decoration: BoxDecoration(
@@ -45,29 +45,29 @@ class AppTheme {
   static const Color primary = Color(0xFF685BFF);
 
   static final ThemeData lightTheme = ThemeData.light().copyWith(
-    textTheme: const TextTheme(
-      headlineSmall: TextStyle(
-        color: Colors.white,
-        fontSize: 46,
-        fontWeight: FontWeight.w800,
-      ),
-    ),
+    // textTheme: const TextTheme(
+    //   headlineSmall: TextStyle(
+    //     color: Colors.white,
+    //     fontSize: 46,
+    //     fontWeight: FontWeight.w800,
+    //   ),
+    // ),
     primaryColor: primary,
     iconTheme: const IconThemeData(
       size: 35,
     ),
 
-    // textTheme: const TextTheme(
-    //   // subtitle1: TextStyle(color: Color.fromARGB(255, 90, 78, 60)),
-    //   // bodyText2: TextStyle(color: Color.fromARGB(255, 90, 78, 60)),
-    //   // headline6: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-    //   // headline1: TextStyle(
-    //   //   color: Color.fromARGB(255, 90, 78, 60),
-    //   //   fontFamily: 'Poppins-Regular',
-    //   //   fontWeight: FontWeight.bold,
-    //   //   fontSize: 32.0,
-    //   // ),
-    // ),
+    textTheme: const TextTheme(
+      titleMedium: TextStyle(color: Color.fromARGB(255, 90, 78, 60)),
+      bodyMedium: TextStyle(color: Color.fromARGB(255, 90, 78, 60)),
+      titleLarge: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+      displayLarge: TextStyle(
+        color: Color.fromARGB(255, 90, 78, 60),
+        fontFamily: 'Poppins-Regular',
+        fontWeight: FontWeight.bold,
+        fontSize: 32.0,
+      ),
+    ),
     // dividerTheme:
     //     const DividerThemeData(color: Colors.black, endIndent: 0, indent: 0),
 
@@ -84,35 +84,32 @@ class AppTheme {
     //     backgroundColor: primary, elevation: 5),
     // //TextFormInput
 
-    // inputDecorationTheme: const InputDecorationTheme(
-    //     prefixIconColor: Color.fromARGB(255, 56, 56, 56),
-    //     hintStyle: TextStyle(
-    //         fontFamily: 'Poppins',
-    //         fontSize: 16.0,
-    //         color: Color.fromRGBO(90, 78, 60, 100))),
-    // // ElevatedButtons
-    // elevatedButtonTheme: ElevatedButtonThemeData(
-    //   style: ElevatedButton.styleFrom(
-    //       foregroundColor: const Color.fromARGB(255, 56, 56, 56),
-    //       backgroundColor: const Color.fromARGB(241, 241, 241, 241),
-    //       shape: RoundedRectangleBorder(
-    //           borderRadius: BorderRadius.circular(8.0)),
-    //       elevation: 10.0,
-    //       minimumSize: const Size(240, 59),
-    //       textStyle: const TextStyle(
-    //         fontFamily: 'Poppins',
-    //         fontSize: 16.0,
-    //       )),
-    // ),
+    inputDecorationTheme: InputDecorationTheme(
+        prefixIconColor: Color.fromARGB(255, 56, 56, 56),
+        border: OutlineInputBorder(
+          borderRadius:
+              BorderRadius.circular(10), // Radio de la esquina del borde
+        ),
+        // Otros atributos del InputDecoration
 
-    // //TextButton
-    // textButtonTheme: TextButtonThemeData(
-    //     style: TextButton.styleFrom(
-    //         foregroundColor: const Color.fromARGB(255, 90, 78, 60),
-    //         textStyle: const TextStyle(
-    //           fontFamily: 'Poppins',
-    //           fontSize: 14.0,
-    //         )))
+        hintStyle: const TextStyle(
+            fontFamily: 'Poppins',
+            fontSize: 16.0,
+            color: Color.fromRGBO(90, 78, 60, 100))),
+    // ElevatedButtons
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+          foregroundColor: const Color.fromARGB(255, 56, 56, 56),
+          backgroundColor: const Color.fromARGB(241, 241, 241, 241),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+          elevation: 10.0,
+          minimumSize: const Size(120, 50),
+          textStyle: const TextStyle(
+            fontFamily: 'Poppins',
+            fontSize: 16.0,
+          )),
+    ),
   );
 }
 

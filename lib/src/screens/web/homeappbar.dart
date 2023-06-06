@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../iniciosesion.dart';
+
 class HomeAppBarWeb extends StatelessWidget {
   const HomeAppBarWeb({super.key});
 
@@ -58,7 +60,7 @@ class HomeAppBarWeb extends StatelessWidget {
                 highlightColor: Colors
                     .transparent, // Establecer el color de resaltado al presionar a transparente
 
-                onPressed: () {},
+                onPressed: () => _mostrarAlert(context),
                 icon: Icon(
                   Icons.account_circle_outlined,
                   color: Colors.black,
@@ -66,5 +68,18 @@ class HomeAppBarWeb extends StatelessWidget {
                 )))
       ],
     );
+  }
+
+  void _mostrarAlert(BuildContext context) {
+    showDialog(
+        context: context,
+        barrierDismissible: true,
+        builder: (context) {
+          return AlertDialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            content: const InicioSesion(),
+          );
+        });
   }
 }
