@@ -85,7 +85,7 @@ class TemaAplication {
     // //TextFormInput
 
     inputDecorationTheme: InputDecorationTheme(
-        prefixIconColor: Color.fromARGB(255, 56, 56, 56),
+        prefixIconColor: const Color.fromARGB(255, 56, 56, 56),
         border: OutlineInputBorder(
           borderRadius:
               BorderRadius.circular(10), // Radio de la esquina del borde

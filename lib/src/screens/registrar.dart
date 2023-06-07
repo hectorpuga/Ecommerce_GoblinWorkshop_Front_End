@@ -28,7 +28,7 @@ class Registrar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ElevatedButton(onPressed: () {}, child: Text("Cancelar")),
+              ElevatedButton(onPressed: () {}, child: const Text("Cancelar")),
               ElevatedButton(
                   onPressed: () {
                     Navigator.pop(context);

@@ -25,7 +25,7 @@ class InicioSesion extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ElevatedButton(onPressed: () {}, child: Text("Entrar")),
+              ElevatedButton(onPressed: () {}, child: const Text("Entrar")),
               ElevatedButton(
                   onPressed: () {
                     Navigator.pop(context);

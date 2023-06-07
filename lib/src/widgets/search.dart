@@ -6,13 +6,15 @@ class LugaresSearch extends SearchDelegate {
 
   @override
   List<Widget>? buildActions(BuildContext context) {
-    return [IconButton(icon: Icon(Icons.clear), onPressed: () => query = "")];
+    return [
+      IconButton(icon: const Icon(Icons.clear), onPressed: () => query = "")
+    ];
   }
 
   @override
   Widget? buildLeading(BuildContext context) {
     return IconButton(
-        icon: Icon(Icons.arrow_back),
+        icon: const Icon(Icons.arrow_back),
         onPressed: () {
           close(context, null);
         });
@@ -20,32 +22,14 @@ class LugaresSearch extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    return Center(
-      child: Text("HOla"),
-    );
-  }
-
-  Widget _emptyContainer() {
     return const Center(
-      child: Icon(
-        Icons.eco_outlined,
-        size: 130,
-      ),
+      child: Text("HOla"),
     );
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return Center(
-      child: Text("HOla"),
-    );
-  }
-}
-
-class CiudadItem extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text("HOla"),
     );
   }

@@ -2,7 +2,9 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 
+import '../../provider/productos.dart';
 import '../../widgets/barra_navegacion.dart';
+import '../../widgets/product_card.dart';
 
 class HomeBodyWeb extends StatelessWidget {
   final SidebarXController controller;
@@ -11,6 +13,7 @@ class HomeBodyWeb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ProductosProvider.getProductos();
     final sized = MediaQuery.of(context).size;
     return Row(mainAxisAlignment: MainAxisAlignment.start, children: [
       BarraDeNavegacion(controller: controller),
@@ -23,7 +26,7 @@ class HomeBodyWeb extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(bottom: 50, top: 50),
+                    margin: const EdgeInsets.only(bottom: 50, top: 50),
                     height: sized.height * 0.35,
                     width: sized.width * 0.8,
                     child: Swiper(
@@ -45,16 +48,10 @@ class HomeBodyWeb extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     for (int i = 0; i < 4; i++)
-                      Container(
-                        margin: EdgeInsets.symmetric(
-                            horizontal: sized.width * 0.007,
-                            vertical: sized.height * 0.007),
-                        decoration: BoxDecoration(
-                            color: Colors.amber,
-                            borderRadius: BorderRadius.circular(14)),
-                        width: sized.width * 0.19,
-                        height: sized.height * 0.35,
-                      )
+                      SizedBox(
+                          width: sized.width * 0.20,
+                          height: sized.height * 0.35,
+                          child: ProductCard())
                   ],
                 )
             ],

@@ -12,7 +12,10 @@ class HomeAppBarWeb extends StatelessWidget {
     return AppBar(
       backgroundColor: Colors.white,
       leading: Builder(builder: (context) {
-        return Container(color: Colors.cyanAccent.shade200);
+        return Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: Image.asset("assets/img/logo.png"),
+        );
       }),
       titleTextStyle: const TextStyle(
         color: Colors.black,
@@ -31,7 +34,7 @@ class HomeAppBarWeb extends StatelessWidget {
           width: 100,
         ),
         Container(
-          margin: EdgeInsets.only(top: 10),
+          margin: const EdgeInsets.only(top: 10),
           width: sized.width * 0.3,
           height: 37,
           decoration: BoxDecoration(
@@ -61,7 +64,7 @@ class HomeAppBarWeb extends StatelessWidget {
                     .transparent, // Establecer el color de resaltado al presionar a transparente
 
                 onPressed: () => _mostrarAlert(context),
-                icon: Icon(
+                icon: const Icon(
                   Icons.account_circle_outlined,
                   color: Colors.black,
                   size: 50,
