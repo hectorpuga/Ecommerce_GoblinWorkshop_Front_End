@@ -1,4 +1,3 @@
-import 'package:ecommerce/src/widgets/search.dart';
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 
@@ -38,12 +37,7 @@ class BarraDeNavegacion extends StatelessWidget {
             debugPrint('Home');
           },
         ),
-        SidebarXItem(
-            icon: Icons.search,
-            label: 'Buscar',
-            onTap: () {
-              showSearch(context: context, delegate: LugaresSearch());
-            }),
+        SidebarXItem(icon: Icons.favorite, label: 'Buscar', onTap: () {}),
         const SidebarXItem(
           icon: Icons.shopping_cart_outlined,
           label: 'Compras',

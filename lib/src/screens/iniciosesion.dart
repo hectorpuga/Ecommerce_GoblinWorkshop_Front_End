@@ -25,8 +25,16 @@ class InicioSesion extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ElevatedButton(onPressed: () {}, child: const Text("Entrar")),
               ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.red)),
+                  onPressed: () {},
+                  child: const Text("Entrar")),
+              ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.green)),
                   onPressed: () {
                     Navigator.pop(context);
                     _mostrarAlert(context);

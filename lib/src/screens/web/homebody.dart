@@ -46,7 +46,7 @@ class HomeBodyWeb extends StatelessWidget {
               ),
               SizedBox(
                 width: sized.width,
-                height: sized.height * 0.111 * products.productos.length,
+                height: sized.height * 0.12 * products.productos.length,
                 child: GridView.builder(
                     itemCount: products.productos.length,
                     physics: const NeverScrollableScrollPhysics(),

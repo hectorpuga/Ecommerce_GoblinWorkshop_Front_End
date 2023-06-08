@@ -17,6 +17,7 @@ class Home extends StatelessWidget {
     final isSmallScreen = MediaQuery.of(context).size.width < 900;
 
     return Scaffold(
+        drawer: Drawer(),
         key: _keyScaffold,
         appBar: isSmallScreen
             ? PreferredSize(

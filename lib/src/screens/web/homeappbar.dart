@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../widgets/search.dart';
 import '../iniciosesion.dart';
 
 class HomeAppBarWeb extends StatelessWidget {
@@ -33,23 +34,28 @@ class HomeAppBarWeb extends StatelessWidget {
         const SizedBox(
           width: 100,
         ),
-        Container(
-          margin: const EdgeInsets.only(top: 10),
-          width: sized.width * 0.3,
-          height: 37,
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.circular(40)),
-          child: const Row(children: [
-            Icon(Icons.search, color: Colors.black),
-            SizedBox(
-              width: 30,
-            ),
-            Text(
-              "Search...",
-              style: TextStyle(fontSize: 15),
-            )
-          ]),
+        GestureDetector(
+          child: Container(
+            margin: const EdgeInsets.only(top: 10),
+            width: sized.width * 0.3,
+            height: 37,
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.black),
+                borderRadius: BorderRadius.circular(40)),
+            child: const Row(children: [
+              Icon(Icons.search, color: Colors.black),
+              SizedBox(
+                width: 30,
+              ),
+              Text(
+                "Search...",
+                style: TextStyle(fontSize: 15),
+              )
+            ]),
+          ),
+          onTap: () {
+            showSearch(context: context, delegate: LugaresSearch());
+          },
         )
       ]),
       actions: [

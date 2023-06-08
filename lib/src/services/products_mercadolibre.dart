@@ -79,4 +79,8 @@ class ProductosMercadoLibre extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  getAct() {
+    notifyListeners();
+  }
 }
