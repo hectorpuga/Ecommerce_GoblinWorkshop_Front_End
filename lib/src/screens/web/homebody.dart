@@ -27,14 +27,14 @@ class HomeBodyWeb extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(bottom: 50, top: 50),
-                    height: sized.height * 0.35,
+                    margin: const EdgeInsets.only(bottom: 50, top: 80),
+                    height: sized.height * 0.45,
                     width: sized.width * 0.8,
                     child: Swiper(
                       itemBuilder: (BuildContext context, int index) {
-                        return Image.network(
-                          products.productos[index].thumbnail,
-                          fit: BoxFit.scaleDown,
+                        return Image.asset(
+                          "assets/img/promo-navidad-miniat.png",
+                          fit: BoxFit.fill,
                         );
                       },
                       itemCount: products.productos.length,
@@ -46,7 +46,7 @@ class HomeBodyWeb extends StatelessWidget {
               ),
               SizedBox(
                 width: sized.width,
-                height: sized.height * 0.11 * products.productos.length,
+                height: sized.height * 0.111 * products.productos.length,
                 child: GridView.builder(
                     itemCount: products.productos.length,
                     physics: const NeverScrollableScrollPhysics(),

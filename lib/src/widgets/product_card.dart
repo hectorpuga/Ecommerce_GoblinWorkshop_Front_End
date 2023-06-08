@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import '../models/result.dart';
@@ -39,13 +42,10 @@ class _BackgroundImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sized = MediaQuery.of(context).size;
-
     return ClipRRect(
       borderRadius: BorderRadius.circular(25),
       child: Container(
         margin: EdgeInsets.only(top: 30),
-        width: sized.width * 0.5,
         child: //url == null
             //     ? Image(image: AssetImage('assets/no-image.png'), fit: BoxFit.cover)
             Column(
@@ -60,24 +60,33 @@ class _BackgroundImage extends StatelessWidget {
               ),
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Column(
                   children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
                     Text(
                       'Precio: \$ ${producto.price}',
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Colors.black, fontWeight: FontWeight.bold),
                     ),
-                    Text(
-                      producto.title,
-                      style: TextStyle(
-                        
-                          overflow: TextOverflow
-                              .ellipsis, // Muestra puntos suspensivos (...) si el texto desborda las tres líneas
-                          // Limita el texto a un máximo de tres líneas
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
-                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 10),
+                      width: 260,
+                      height: 50,
+                      child: AutoSizeText(
+                        utf8.decode(producto.title.runes.toList()),
+                        softWrap: true,
+                        style: TextStyle(
+                          fontSize: 8,
+                        ),
+                        textAlign: TextAlign.center,
+                        maxLines: 4,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    )
                   ],
                 ),
               ],

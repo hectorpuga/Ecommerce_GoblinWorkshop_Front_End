@@ -22,6 +22,7 @@ class Result {
   int? officialStoreId;
   bool? useThumbnailId;
   bool acceptsMercadopago;
+  Map<String, VariationsDatum>? variationsData;
 
   Result({
     required this.id,
@@ -29,6 +30,7 @@ class Result {
     required this.condition,
     required this.thumbnailId,
     this.catalogProductId,
+    this.variationsData,
     required this.listingTypeId,
     required this.permalink,
     required this.buyingMode,
@@ -73,6 +75,8 @@ class Result {
         officialStoreId: json["official_store_id"],
         useThumbnailId: json["use_thumbnail_id"],
         acceptsMercadopago: json["accepts_mercadopago"],
+        variationsData: Map.from(json["variations_data"] ?? {}).map((k, v) =>
+            MapEntry<String, VariationsDatum>(k, VariationsDatum.fromJson(v))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -97,5 +101,45 @@ class Result {
         "official_store_id": officialStoreId,
         "use_thumbnail_id": useThumbnailId,
         "accepts_mercadopago": acceptsMercadopago,
+        "variations_data": Map.from(variationsData!)
+            .map((k, v) => MapEntry<String, dynamic>(k, v.toJson())),
+      };
+}
+
+class VariationsDatum {
+  String thumbnail;
+  String? ratio;
+  String? name;
+  int? picturesQty;
+  String? inventoryId;
+
+  VariationsDatum({
+    required this.thumbnail,
+    this.ratio,
+    this.name,
+    this.picturesQty,
+    this.inventoryId,
+  });
+
+  factory VariationsDatum.fromRawJson(String str) =>
+      VariationsDatum.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory VariationsDatum.fromJson(Map<String, dynamic> json) =>
+      VariationsDatum(
+        thumbnail: json["thumbnail"],
+        ratio: json["ratio"],
+        name: json["name"],
+        picturesQty: json["pictures_qty"],
+        inventoryId: json["inventory_id"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "thumbnail": thumbnail,
+        "ratio": ratio,
+        "name": name,
+        "pictures_qty": picturesQty,
+        "inventory_id": inventoryId,
       };
 }
