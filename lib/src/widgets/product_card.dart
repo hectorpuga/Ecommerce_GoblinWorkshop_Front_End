@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 
+import '../models/result.dart';
+
 class ProductCard extends StatelessWidget {
-  const ProductCard({Key? key}) : super(key: key);
+  final Result data;
+  const ProductCard({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Container(
-        margin: EdgeInsets.only(top: 20, bottom: 20),
+        margin: const EdgeInsets.only(top: 20, bottom: 20),
         decoration: _cardBorders(),
-        child: const Stack(
+        child: Stack(
           alignment: Alignment.bottomLeft,
           children: [
-            _BackgroundImage("https://via.placeholder.com/350x150"),
+            _BackgroundImage(data),
           ],
         ),
       ),
@@ -30,24 +33,57 @@ class ProductCard extends StatelessWidget {
 }
 
 class _BackgroundImage extends StatelessWidget {
-  final String? url;
+  final Result producto;
 
-  const _BackgroundImage(this.url);
+  const _BackgroundImage(this.producto);
 
   @override
   Widget build(BuildContext context) {
+    final sized = MediaQuery.of(context).size;
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(25),
       child: Container(
-        width: double.infinity,
-        height: 400,
-        child: url == null
-            ? Image(image: AssetImage('assets/no-image.png'), fit: BoxFit.cover)
-            : FadeInImage(
-                placeholder: AssetImage('assets/jar-loading.gif'),
-                image: NetworkImage(url!),
-                fit: BoxFit.cover,
+        margin: EdgeInsets.only(top: 30),
+        width: sized.width * 0.5,
+        child: //url == null
+            //     ? Image(image: AssetImage('assets/no-image.png'), fit: BoxFit.cover)
+            Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: 150,
+              child: FadeInImage(
+                placeholder: const AssetImage('assets/img/progress.gif'),
+                image: NetworkImage(producto.thumbnail),
+                fit: BoxFit.contain,
               ),
+            ),
+            Row(
+              children: [
+                Column(
+                  children: [
+                    Text(
+                      'Precio: \$ ${producto.price}',
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      producto.title,
+                      style: TextStyle(
+                        
+                          overflow: TextOverflow
+                              .ellipsis, // Muestra puntos suspensivos (...) si el texto desborda las tres líneas
+                          // Limita el texto a un máximo de tres líneas
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

@@ -1,8 +1,9 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sidebarx/sidebarx.dart';
 
-import '../../provider/productos.dart';
+import '../../services/products_mercadolibre.dart';
 import '../../widgets/barra_navegacion.dart';
 import '../../widgets/product_card.dart';
 
@@ -13,7 +14,7 @@ class HomeBodyWeb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ProductosProvider.getProductos();
+    final products = Provider.of<ProductosMercadoLibre>(context);
     final sized = MediaQuery.of(context).size;
     return Row(mainAxisAlignment: MainAxisAlignment.start, children: [
       BarraDeNavegacion(controller: controller),
@@ -32,28 +33,33 @@ class HomeBodyWeb extends StatelessWidget {
                     child: Swiper(
                       itemBuilder: (BuildContext context, int index) {
                         return Image.network(
-                          "https://via.placeholder.com/350x150",
-                          fit: BoxFit.fill,
+                          products.productos[index].thumbnail,
+                          fit: BoxFit.scaleDown,
                         );
                       },
-                      itemCount: 3,
+                      itemCount: products.productos.length,
                       pagination: const SwiperPagination(),
                       control: const SwiperControl(),
                     ),
                   ),
                 ],
               ),
-              for (int i = 0; i < 10; i++)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    for (int i = 0; i < 4; i++)
-                      SizedBox(
-                          width: sized.width * 0.20,
-                          height: sized.height * 0.35,
-                          child: ProductCard())
-                  ],
-                )
+              SizedBox(
+                width: sized.width,
+                height: sized.height * 0.11 * products.productos.length,
+                child: GridView.builder(
+                    itemCount: products.productos.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                    ),
+                    itemBuilder: (_, i) {
+                      return ProductCard(
+                        data: products.productos[i],
+                      );
+                    }),
+              ),
             ],
           ),
         ),
