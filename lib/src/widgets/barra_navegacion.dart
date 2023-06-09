@@ -37,7 +37,14 @@ class BarraDeNavegacion extends StatelessWidget {
             debugPrint('Home');
           },
         ),
-        SidebarXItem(icon: Icons.favorite, label: 'Buscar', onTap: () {}),
+        SidebarXItem(
+            icon: Icons.favorite,
+            label: 'favoritos',
+            onTap: () {
+              _controller.selectIndex(2);
+
+              print(_controller.selectedIndex);
+            }),
         const SidebarXItem(
           icon: Icons.shopping_cart_outlined,
           label: 'Compras',

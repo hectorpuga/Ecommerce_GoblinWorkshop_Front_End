@@ -17,7 +17,7 @@ class Home extends StatelessWidget {
     final isSmallScreen = MediaQuery.of(context).size.width < 900;
 
     return Scaffold(
-        drawer: Drawer(),
+        drawer: const Drawer(),
         key: _keyScaffold,
         appBar: isSmallScreen
             ? PreferredSize(
@@ -31,7 +31,7 @@ class Home extends StatelessWidget {
             return const HomeBodyApp();
           } else {
             // Si el ancho máximo es igual o mayor a 600, se muestra el contenido normal
-            return HomeBodyWeb(controller: controller);
+            return HomeWeb(controller: controller);
           }
         }));
   }

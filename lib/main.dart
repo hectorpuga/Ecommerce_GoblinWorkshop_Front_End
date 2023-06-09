@@ -1,3 +1,4 @@
+import 'package:ecommerce/src/provider/productos.dart';
 import 'package:ecommerce/src/screens/home.dart';
 import 'package:ecommerce/src/services/products_mercadolibre.dart';
 import 'package:ecommerce/src/theme.dart';
@@ -17,6 +18,10 @@ class AppState extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => ProductosMercadoLibre(),
+          lazy: false,
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ProductsProvider(),
           lazy: false,
         )
       ],

@@ -71,7 +71,7 @@ class ProductosMercadoLibre extends ChangeNotifier {
 
   getProductos() async {
     var url = Uri.parse(
-        'https://api.mercadolibre.com/sites/MLA/search?q=navidad&limit=16&offset=1');
+        'https://api.mercadolibre.com/sites/MLA/search?q=navidad&limit=24&offset=1');
     var response = await http.get(url,
         headers: {"Authorization": "Qp3E0gE39U0U8ngIBNcaeR5vkHnkJMxv"});
 

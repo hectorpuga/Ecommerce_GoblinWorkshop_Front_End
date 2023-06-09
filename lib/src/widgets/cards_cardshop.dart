@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 
-class CardContainer extends StatelessWidget {
+class CardsShoping extends StatelessWidget {
   final Widget child;
-  const CardContainer({Key? key, required this.child}) : super(key: key);
+  const CardsShoping({Key? key, required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final sized = MediaQuery.of(context).size;
+
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
       child: Container(
           padding: const EdgeInsets.all(20),
-          width: double.infinity,
+          width: sized.width * 0.4,
+          height: 300,
           decoration: _createCardShape(),
           child: child),
     );
