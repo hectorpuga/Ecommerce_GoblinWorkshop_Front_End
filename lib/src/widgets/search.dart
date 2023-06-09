@@ -1,22 +1,26 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../models/result.dart';
 import '../services/products_mercadolibre.dart';
 
-class LugaresSearch extends SearchDelegate {
+class ProductosSearch extends SearchDelegate {
   @override
-  String? get searchFieldLabel => "Buscar Lugar";
+  String? get searchFieldLabel => "Buscar Articulo";
 
   @override
   List<Widget>? buildActions(BuildContext context) {
-    return [IconButton(icon: Icon(Icons.clear), onPressed: () => query = "")];
+    return [
+      IconButton(icon: const Icon(Icons.clear), onPressed: () => query = "")
+    ];
   }
 
   @override
   Widget? buildLeading(BuildContext context) {
     return IconButton(
-        icon: Icon(Icons.arrow_back),
+        icon: const Icon(Icons.arrow_back),
         onPressed: () {
           close(context, null);
         });
@@ -46,7 +50,7 @@ class LugaresSearch extends SearchDelegate {
   Widget _emptyContainer() {
     return const Center(
       child: Icon(
-        Icons.eco_outlined,
+        Icons.ac_unit_rounded,
         size: 130,
       ),
     );
@@ -87,7 +91,7 @@ class CiudadItem extends StatelessWidget {
         ListTile(
           leading: const Icon(Icons.search),
           title: Text(
-            producto.title,
+            utf8.decode(producto.title.runes.toList()),
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
           ),
 

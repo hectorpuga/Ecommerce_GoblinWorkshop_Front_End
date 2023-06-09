@@ -6,6 +6,25 @@ class ProductsProvider extends ChangeNotifier {
   final List<Result> _productsFavorite = [];
   final List<Result> _carrito = [];
 
+  dynamic _totalProductos = 0;
+  dynamic _cantProducts = 0;
+
+  set cantProducts(dynamic v) {
+    _cantProducts = v;
+
+    notifyListeners();
+  }
+
+  get cantProducts => _cantProducts;
+
+  set totalProdcutos(dynamic v) {
+    _totalProductos += v;
+
+    notifyListeners();
+  }
+
+  get totalProductos => _totalProductos;
+
   carritoAdd(Result producto) {
     _carrito.add(producto);
     notifyListeners();

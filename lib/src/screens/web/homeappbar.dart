@@ -54,7 +54,7 @@ class HomeAppBarWeb extends StatelessWidget {
             ]),
           ),
           onTap: () {
-            showSearch(context: context, delegate: LugaresSearch());
+            showSearch(context: context, delegate: ProductosSearch());
           },
         )
       ]),

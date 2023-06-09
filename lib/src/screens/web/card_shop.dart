@@ -17,9 +17,11 @@ class CardShop extends StatelessWidget {
     final sized = MediaQuery.of(context).size;
 
     final textos = ["Productos", "Envios", "Total"];
+    dynamic valoreTotales = 0;
 
     final List<Result> getCarrito =
         Provider.of<ProductsProvider>(context).getCarrito();
+    final productos = Provider.of<ProductsProvider>(context);
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -104,7 +106,7 @@ class CardShop extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Divider(),
+                      const Divider(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -121,10 +123,17 @@ class CardShop extends StatelessWidget {
                               incIconSize: 10,
                               controller: TextEditingController(),
                               onIncrement: (v) {
-                                print(getCarrito[i].price * v);
+                                valoreTotales += getCarrito[i].price;
+
+                                productos.totalProdcutos = valoreTotales;
+
+                                print(valoreTotales);
                               },
                               onDecrement: (v) {
-                                print(getCarrito[i].price * v);
+                                valoreTotales -= getCarrito[i].price;
+
+                                productos.totalProdcutos = valoreTotales;
+                                print(valoreTotales);
                               },
                               min: 0,
                               max: 100,
@@ -168,12 +177,48 @@ class CardShop extends StatelessWidget {
                     padding: const EdgeInsets.all(10.0),
                     child: Row(
                       children: [
-                        Text(
-                          textos[i],
-                          style: const TextStyle(
-                            color: Colors.white,
+                        if (i == 2)
+                          SizedBox(
+                            width: sized.width * 0.26,
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    textos[i],
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Text(
+                                    productos.totalProductos.toString(),
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  )
+                                ]),
                           ),
-                        )
+                        if (i != 2)
+                          SizedBox(
+                            width: sized.width * 0.26,
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    textos[i],
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Text(
+                                    '0',
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  )
+                                ]),
+                          ),
                       ],
                     ),
                   ),

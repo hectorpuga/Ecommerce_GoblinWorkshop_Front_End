@@ -24,7 +24,7 @@ class HomeWeb extends StatelessWidget {
         builder: (context, child) {
           return Row(mainAxisAlignment: MainAxisAlignment.start, children: [
             BarraDeNavegacion(controller: controller),
-            if (controller.selectedIndex == 2)
+            if (controller.selectedIndex == 0)
               HomeBody(sized: sized, products: products),
             if (controller.selectedIndex == 1)
               Expanded(
@@ -33,7 +33,7 @@ class HomeWeb extends StatelessWidget {
                     height: sized.height * 0.12 * products.productos.length,
                     child: const Favorites()),
               ),
-            if (controller.selectedIndex == 0) const CardShop()
+            if (controller.selectedIndex == 2) const CardShop()
           ]);
         });
   }
